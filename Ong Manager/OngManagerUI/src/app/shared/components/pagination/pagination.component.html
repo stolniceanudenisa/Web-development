@@ -1,0 +1,30 @@
+<div class="pagination__container">
+  <ion-button fill="clear" [disabled]="currentPage === 1" (click)="onFirstPage()">
+    <ion-icon slot="icon-only" name="play-back-circle-outline" size="large"></ion-icon>
+  </ion-button>
+
+  <ion-button fill="clear" [disabled]="currentPage === 1" (click)="onPreviousPage()">
+    <ion-icon slot="icon-only" name="caret-back-circle-outline" size="large"></ion-icon>
+  </ion-button>
+
+  <ion-button fill="clear" [disabled]="currentPage === allPagesNumber" (click)="onNextPage()">
+    <ion-icon slot="icon-only" name="caret-forward-circle-outline" size="large"></ion-icon>
+  </ion-button>
+
+  <ion-button fill="clear" [disabled]="currentPage === allPagesNumber" (click)="onLastPage()">
+    <ion-icon slot="icon-only" name="play-forward-circle-outline" size="large"></ion-icon>
+  </ion-button>
+
+  <small class="small-text">{{ 'pagination.itemsPerPage' | translate }}</small>
+  <div class="select-container">
+    <ion-select
+      (ionChange)="onTableSizeChange($event)"
+      interface="popover"
+      [formControl]="selectedTableSizeControl"
+      class="select-label select-wrapper"
+    >
+      <ion-select-option *ngFor="let size of tableSizes" [value]="size">{{ size }}</ion-select-option>
+    </ion-select>
+  </div>
+  <small class="range-text">{{ getPageRange() }}</small>
+</div>

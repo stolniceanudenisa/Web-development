@@ -1,0 +1,42 @@
+.header-title {
+  text-align: center;
+}
+
+.custom-dropdown {
+  max-height: none;
+}
+
+.hover-pointer:hover {
+  cursor: pointer;
+}
+
+ion-grid {
+  margin-top: 2rem;
+  border-radius: 10px;
+  overflow: auto;
+  border: 2px solid var(--ion-color-danger-contrast);
+  .header-row {
+    background: var(--ion-color-primary);
+    color: var(--ion-color-danger-contrast);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+  }
+  .data-row {
+    font-size: 16px;
+    text-align: center;
+    display: flex;
+    ion-col {
+      border-bottom: 1px solid var(--ion-color-danger-contrast);
+      min-width: 150px;
+      width: auto;
+      font-weight: bold;
+      .organization-link {
+        text-decoration: none;
+        color: var(--ion-color-primary);
+      }
+    }
+  }
+}

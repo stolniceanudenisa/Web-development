@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .header-image {
+            max-width: 100%;
+            height: auto;
+            background-position: center;
+        }
+
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+
+        }
+    </style>
+</head>
+<body>
+<img src="cid:ong-manager-image" class="center"></img>
+
+<h1>Your Interest in Joining Our Organization</h1>
+<p>We are pleased to inform you that your application to join our organization has been received, ${firstName} ${lastName}.</p>
+<p>Your provided information will be reviewed by the president of our organization.</p>
+<p>The president will carefully consider your skills and experience in relation to our organization's needs.</p>
+<p>Thank you once again for considering our organization. We look forward to the possibility of having you on our
+    team.</p>
+
+<p>Best regards,<br>
+  ${organizationName} Team</br></p>
+
+</body>
+</html>

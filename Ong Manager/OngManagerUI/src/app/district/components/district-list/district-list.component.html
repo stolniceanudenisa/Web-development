@@ -1,0 +1,30 @@
+<ion-grid [fixed]="true">
+  <ion-row class="first-row">
+    <ion-col class="ion-text-bold">{{ 'district.districtNumber' | translate }}</ion-col>
+    <ion-col class="ion-text-bold">{{ 'district.districtName' | translate }}</ion-col>
+    <ion-col class="ion-text-bold">{{ 'district.districtDescription' | translate }}</ion-col>
+    <ion-col class="ion-text-bold">{{ 'district.districtCountriesList' | translate }}</ion-col>
+    <ion-col class="ion-text-bold">{{ 'actions' | translate }}</ion-col>
+  </ion-row>
+  <ion-row class="data-row" *ngFor="let district of districts">
+    <ion-col>{{ district.districtNumber }}</ion-col>
+    <ion-col>{{ district.name }}</ion-col>
+    <ion-col>{{ district.description }}</ion-col>
+    <ion-col>{{ district.countries }}</ion-col>
+    <ion-col>
+      <ion-button fill="outline" (click)="openEditDistrictModal(district)">
+        <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="outline" (click)="deleteDistrict(district)">
+        <ion-icon slot="icon-only" name="trash-bin-outline"> </ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<app-pagination
+  [itemsPerPage]="tableSize"
+  [itemsNumber]="count"
+  [allPagesNumber]="totalPages"
+  (changePage)="onTablePageChange($event)"
+  (changeSize)="onTableSizeChange($event)"
+></app-pagination>

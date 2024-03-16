@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+  .title {
+    text-align: center;
+    font-weight: bold;
+    display: contents;
+    position: relative;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    row-gap: 20px;
+    border: 2px solid var(--ion-color-danger-contrast);
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    .custom-button {
+      width: 100%;
+      height: 60px;
+      border-radius: 10px;
+      text-align: center;
+      line-height: 60px;
+      background-color: var(--ion-color-primary);
+      color: var(--ion-color-danger-contrast);
+      font-size: 18px;
+      margin-bottom: 14px;
+    }
+    .translate-welcome {
+      border: 6px solid var(--ion-color-primary);
+      border-radius: 9px;
+      margin-bottom: 10px;
+    }
+  }
+}

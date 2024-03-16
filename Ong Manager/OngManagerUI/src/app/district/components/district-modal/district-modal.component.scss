@@ -1,0 +1,12 @@
+.fixed-height-content {
+  height: calc(100% - 75px);
+  overflow: auto;
+  .fixed-height-item {
+    height: 80px;
+    .error-message {
+      margin-top: 3px;
+      margin-bottom: 5px;
+      color: var(--ion-color-danger);
+    }
+  }
+}

@@ -1,0 +1,46 @@
+<div>
+  <div>
+    <ion-searchbar [(ngModel)]="searchDistrict" (input)="onSearch($event)"></ion-searchbar>
+    <ion-list>
+      <ion-item class="hover-pointer" *ngFor="let district of districts" (click)="selectDistrict(district)">
+        {{ district.name }}
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <ion-grid>
+    <ion-row class="header-row">
+      <ion-col>{{ 'organization.name' | translate }}</ion-col>
+      <ion-col>{{ 'organization.description' | translate }}</ion-col>
+      <ion-col>{{ 'organization.county' | translate }}</ion-col>
+      <ion-col class="ion-text-bold">{{ 'actions' | translate }}</ion-col>
+    </ion-row>
+    <ion-row class="data-row" *ngFor="let organization of organizations?.content">
+      <ion-col *ngIf="userRole === 'ADMIN'" size="3">
+        <a [routerLink]="[organization.id]" class="organization-link">{{ organization.name }}</a>
+      </ion-col>
+      <ion-col
+        *ngIf="userRole === 'NO_ROLE'"
+        size="3"
+        (click)="confirmJoinOrganization(organization)"
+        class="hover-pointer"
+        >{{ organization.name }}
+      </ion-col>
+      <ion-col>{{ organization.description }}</ion-col>
+      <ion-col>{{ organization.county }}</ion-col>
+      <ion-col>
+        <ion-button size="small" fill="outline" (click)="openEditOrganizationModal(organization)">
+          <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <app-pagination
+    [itemsPerPage]="tableSize"
+    [itemsNumber]="totalElements"
+    [allPagesNumber]="totalPages"
+    (changePage)="onTablePageChange($event)"
+    (changeSize)="onTableSizeChange($event)"
+  ></app-pagination>
+</div>

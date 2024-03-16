@@ -1,0 +1,26 @@
+<ion-card [ngModel]="organizationRegistrationRequest" class="custom-card">
+  <ion-card-header class="card-header">
+    <ion-card-subtitle class="card-subtitle">{{
+      'organizationRequests.registrationDetails.subtitle' | translate
+    }}</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content class="card-content">
+    <div class="card-content-item">
+      <b>{{ 'organizationRequests.registrationDetails.name' | translate }}</b>
+      {{ organizationRegistrationRequest.organisationDetails?.name }}
+    </div>
+    <div class="card-content-item">
+      <b>{{ 'organizationRequests.registrationDetails.districtId' | translate }}</b
+      >{{ organizationRegistrationRequest.organisationDetails?.districtId }}
+    </div>
+    <div class="card-content-item">
+      <b>{{ 'organizationRequests.registrationDetails.county' | translate }}</b
+      >{{ organizationRegistrationRequest.organisationDetails?.county }}
+    </div>
+    <div class="card-content-item">
+      <b>{{ 'organizationRequests.registrationDetails.details' | translate }}</b
+      >{{ organizationRegistrationRequest.organisationDetails?.details }}
+    </div>
+  </ion-card-content>
+</ion-card>

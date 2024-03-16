@@ -1,0 +1,5 @@
+<app-header [pageTitle]="'district.dist' | translate">
+  <ion-button slot="end" (click)="openAddDistrictModal()">{{'district.addDistrict'|translate}}</ion-button>
+</app-header>
+
+<ion-content><app-district-list [shouldRefresh]="refreshList"></app-district-list></ion-content>

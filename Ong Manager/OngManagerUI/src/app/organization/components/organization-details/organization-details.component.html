@@ -1,0 +1,64 @@
+<app-header [pageTitle]="'organization.organizationDetails' | translate">
+  <ion-button slot="end" size="medium" fill="outline" (click)="openEditOrganizationModal(organizationFetched)">
+    <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+  </ion-button>
+  <ion-button slot="end" *ngIf="(userRole$ | async) === 'ADMIN'" (click)="confirmEnableDisable()">
+    {{
+      organization.enabled
+        ? ('organization.enableOrganization' | translate)
+        : ('organization.disableOrganization' | translate)
+    }}
+  </ion-button>
+</app-header>
+
+<ion-content *ngIf="organizationFetched">
+  <div class="organization-details-card">
+    <div class="organization-details">
+      <ion-card>
+        <img
+          class="horizontal-banner"
+          [src]="'data:image;base64,' + organizationFetched.banner"
+          alt="Organization banner"
+          *ngIf="organizationFetched.banner"
+        />
+        <ion-item>
+          <ion-avatar slot="start">
+            <img
+              *ngIf="organizationFetched.banner"
+              src="data:image;base64,{{ organizationFetched.logo }}"
+              alt="Organization Logo"
+            />
+          </ion-avatar>
+
+          <ion-card-title class="organization-name-subtitle">{{ organizationFetched.name }}</ion-card-title>
+        </ion-item>
+        <ion-card-content>
+          <ion-grid>
+            <ion-row>
+              <ion-col size="10">
+                <ion-card-subtitle
+                  >{{ 'organization.county' | translate }}: {{ organizationFetched.county }}</ion-card-subtitle
+                >
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col size="12">
+                <p>{{ 'organization.description' | translate }}: {{ organizationFetched.description }}</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <div class="overlay" *ngIf="organization.enabled">
+      <div class="overlay-content">
+        <p>{{ 'organization.disabledMessage' | translate }}</p>
+      </div>
+    </div>
+  </div>
+  <p class="members-title">{{ 'organization.membersOfTheOrganization' | translate }}</p>
+
+  <app-members-list [organizationId]="organizationId"></app-members-list>
+</ion-content>

@@ -1,0 +1,15 @@
+<div *ngIf="!!userRole" class="menu-section">
+  <ion-list>
+    <ion-item *ngFor="let tab of listTabs" routerLinkActive="active" [routerLink]="tab.path">
+      <ion-menu-toggle autoHide="false">
+        <ion-label>{{ 'tabs.' + tab.tabName | translate }}</ion-label>
+      </ion-menu-toggle>
+    </ion-item>
+  </ion-list>
+
+  <ion-button class="edit-profile-button" *ngIf="userRole !== 'ADMIN'" (click)="openEditProfileModal()">
+    {{ 'profile.editProfile' | translate }}
+  </ion-button>
+
+  <app-translate class="translate-selector"></app-translate>
+</div>

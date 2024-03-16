@@ -1,0 +1,11 @@
+.custom-select {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  font-size: 14px;
+  align-items: center;
+  justify-content: center;
+  &::part(container) {
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,41 @@
+<ion-grid [fixed]="true">
+  <ion-row class="first-row">
+    <ion-col>{{ 'organizationRequests.requesterId' | translate }}</ion-col>
+    <ion-col>{{ 'organizationRequests.organizationName' | translate }}</ion-col>
+    <ion-col>{{ 'organizationRequests.districtId' | translate }}</ion-col>
+    <ion-col>{{ 'organizationRequests.organizationDetails' | translate }}</ion-col>
+    <ion-col>{{ 'organizationRequests.organizationCounty' | translate }}</ion-col>
+    <ion-col>{{ 'organizationRequests.actions' | translate }}</ion-col>
+  </ion-row>
+  <ion-row class="data-row" *ngFor="let org of organizationRegistrationRequests">
+    <ion-col>{{ org.requesterId }}</ion-col>
+    <ion-col>{{ org.organisationDetails?.name }}</ion-col>
+    <ion-col>{{ org.organisationDetails?.districtId }}</ion-col>
+    <ion-col>{{ org.organisationDetails?.details }}</ion-col>
+    <ion-col>{{ org.organisationDetails?.county }}</ion-col>
+
+    <ion-col *ngIf="(userRole$ | async) === 'ADMIN'">
+      <ion-button (click)="approveRequest(org)" fill="clear">
+        <ion-icon slot="icon-only" name="checkmark-circle-outline"> </ion-icon>
+      </ion-button>
+      <ion-button (click)="denyRequest(org)" fill="clear">
+        <ion-icon slot="icon-only" name="close-circle-outline"> </ion-icon>
+      </ion-button>
+    </ion-col>
+    <ion-col *ngIf="(userRole$ | async) === 'NO_ROLE'">
+      <ion-button fill="outline" (click)="openEditOrganizationRequestModal(org)">
+        <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="outline" (click)="deleteRequestByNoRole(org)">
+        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<app-pagination
+  [itemsPerPage]="tableSize"
+  [itemsNumber]="count"
+  [allPagesNumber]="totalPages"
+  (changePage)="onTablePageChange($event)"
+  (changeSize)="onTableSizeChange($event)"
+></app-pagination>

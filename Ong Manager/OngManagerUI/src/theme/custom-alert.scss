@@ -1,0 +1,25 @@
+.success-alert {
+  --background: var(--ion-color-primary-contrast);
+  --border-radius: 1px;
+  .alert-title.sc-ion-alert-md {
+    color: var(--ion-color-success);
+  }
+}
+
+/* Info Button */
+.info-alert {
+  --background: var(--ion-color-primary-contrast);
+  --border-radius: 1px;
+  .alert-title.sc-ion-alert-md {
+    color: var(--ion-color-warning);
+  }
+}
+
+/* Error Button */
+.error-alert {
+  --background: var(--ion-color-primary-contrast);
+  --border-radius: 1px;
+  .alert-title.sc-ion-alert-md {
+    color: var(--ion-color-danger);
+  }
+}

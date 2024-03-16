@@ -1,0 +1,35 @@
+.fixed-height-content {
+  height: calc(100% - 75px);
+  overflow: auto;
+  .fixed-height-item {
+    height: 80px;
+    .error-message {
+      margin-top: 3px;
+      margin-bottom: 5px;
+      color: var(--ion-color-danger);
+    }
+  }
+  .file-label {
+    margin-left: 17px;
+    font-size: 13px;
+  }
+
+  .file-input {
+    opacity: 0;
+    position: absolute;
+  }
+  .file-preview {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+
+    img {
+      max-width: 50px;
+      max-height: 50px;
+      margin-right: 10px;
+    }
+  }
+  .save-button {
+    margin-top: -25px;
+  }
+}

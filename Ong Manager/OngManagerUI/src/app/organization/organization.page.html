@@ -1,0 +1,32 @@
+<app-header [pageTitle]="'organization.title' | translate">
+  <ion-title *ngIf="(userRole$ | async) === 'NO_ROLE' &&  (userHasRequestMade$ | async)" class="ion-title-top-right"
+    >{{'organization.noRoleUser.requestDetails'|translate}}</ion-title
+  >
+  <ion-button
+    slot="end"
+    *ngIf="(userRole$ | async) === 'NO_ROLE' && !(userHasRequestMade$ | async)"
+    (click)="openOrganizationRegistrationRequestModal()"
+  >
+    {{ 'organizationRequests.createOrganizationRequest' | translate }}
+  </ion-button>
+</app-header>
+
+<ion-content>
+  <div [ngSwitch]="userRole$ | async">
+    <div *ngSwitchCase="'ADMIN'">
+      <app-organization-list [userRole]="'ADMIN'"></app-organization-list>
+    </div>
+    <div *ngSwitchCase="'NO_ROLE'">
+      <app-organization-list
+        [userRole]="'NO_ROLE'"
+        *ngIf="(userHasRequestMade$ | async) === false"
+      ></app-organization-list>
+      <app-organization-request-details
+        *ngIf="(userHasRequestMade$ | async) === true"
+      ></app-organization-request-details>
+    </div>
+    <div *ngSwitchCase="'ASPIRING_MEMBER'">
+      <p>detalii organizatie</p>
+    </div>
+  </div>
+</ion-content>

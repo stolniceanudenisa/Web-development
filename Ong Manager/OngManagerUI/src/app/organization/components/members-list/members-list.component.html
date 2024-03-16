@@ -1,0 +1,32 @@
+<ion-list>
+  <ion-item-sliding *ngFor="let member of members">
+    <ion-card
+      ><ion-item>
+        <ion-avatar slot="start">
+          <img
+            src="https://hips.hearstapps.com/hmg-prod/images/close-up-of-tulips-blooming-in-field-royalty-free-image-1584131603.jpg"
+            alt="flower"
+          />
+        </ion-avatar>
+        <ion-label>
+          <h3>{{ member?.personalInformationDTO?.firstName }} {{ member?.personalInformationDTO?.lastName }}</h3>
+          <p>{{ member?.role }}</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-card-header>
+        <ion-card-subtitle>{{ 'account.email' | translate }} {{ member?.email }}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="card-title">
+          {{ 'account.birthdate' | translate }} {{ member?.personalInformationDTO?.birthdate }}
+        </div>
+        <div class="card-title">
+          {{ 'account.phoneNumber' | translate }} {{ member?.personalInformationDTO?.phoneNumber }}
+        </div>
+        <div class="card-title">{{ 'account.description' | translate }} {{ member?.accountDescription }}</div>
+      </ion-card-content>
+    </ion-card>
+  </ion-item-sliding>
+</ion-list>

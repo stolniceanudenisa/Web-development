@@ -1,0 +1,27 @@
+<ion-menu contentId="main">
+  <ion-content>
+    <app-menu [userRole]="userRole" [listTabs]="menuTabs"></app-menu>
+  </ion-content>
+</ion-menu>
+
+<ion-content id="main">
+  <ion-router-outlet
+    ><ion-header [translucent]="true">
+      <ion-toolbar>
+        <ion-title class="title">{{'ongManager'|translate}}</ion-title>
+
+        <ion-buttons slot="start">
+          <ng-container *ngTemplateOutlet="menuButtonTemplate"></ng-container>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+  </ion-router-outlet>
+
+  <ng-template #menuButtonTemplate>
+    <ion-menu-toggle auto-hide="false">
+      <ion-button class="menu-button">
+        <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-menu-toggle>
+  </ng-template>
+</ion-content>

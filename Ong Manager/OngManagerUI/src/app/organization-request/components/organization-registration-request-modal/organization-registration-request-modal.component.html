@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ translatedTitle }}</ion-title>
+    <ion-button slot="end" (click)="dismissModal(false)" fill="clear" class="close-button">
+      <ion-icon slot="icon-only" name="close-outline"> </ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fixed-height-content">
+  <form [formGroup]="organizationRegistrationRequestForm" (ngSubmit)="actionOrganizationRegistrationRequest()">
+    <ion-list>
+      <ion-item class="fixed-height-item">
+        <ion-label position="floating">{{ 'organizationRequests.organizationName' | translate }}</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+        <small *ngIf="nameControl?.hasError('required') && nameControl.touched" class="error-message">
+          {{ 'organizationRequests.organizationNameRequired' | translate }}
+        </small>
+        <small *ngIf="nameControl?.hasError('minlength') && nameControl.touched" class="error-message">
+          {{ 'organizationRequests.organizationNameMinLength' | translate }}
+        </small>
+        <small *ngIf="nameControl?.hasError('maxlength') && nameControl.touched" class="error-message">
+          {{ 'organizationRequests.organizationNameMaxLength' | translate }}
+        </small>
+      </ion-item>
+
+      <ion-item class="fixed-height-item">
+        <ion-label position="floating">{{ 'organizationRequests.district' | translate }}</ion-label>
+        <ion-select formControlName="districtId" interface="popover">
+          <ion-select-option *ngFor="let district of districts.content" [value]="district.id">
+            {{ district.name }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="fixed-height-item">
+        <ion-label position="floating">{{ 'organizationRequests.organizationCounty' | translate }}</ion-label>
+        <ion-input type="text" formControlName="county"></ion-input>
+        <small *ngIf="countyControl?.hasError('required') && countyControl.touched" class="error-message">
+          {{ 'organizationRequests.organizationCountyRequired' | translate }}
+        </small>
+        <small *ngIf="countyControl?.hasError('minlength') && nameControl.touched" class="error-message">
+          {{ 'organizationRequests.organizationCountyMinLength' | translate }}
+        </small>
+        <small *ngIf="countyControl?.hasError('maxlength') && nameControl.touched" class="error-message">
+          {{ 'organizationRequests.organizationCountyMaxLength' | translate }}
+        </small>
+      </ion-item>
+
+      <ion-item class="fixed-height-item">
+        <ion-label position="floating">{{ 'organizationRequests.organizationDetails' | translate }}</ion-label>
+        <ion-input type="text" formControlName="details"></ion-input>
+        <small *ngIf="detailsControl?.hasError('maxlength') && detailsControl.touched" class="error-message">
+          {{ 'organizationRequests.organizationDetailsMaxLength' | translate }}
+        </small>
+      </ion-item>
+    </ion-list>
+
+    <div class="ion-padding">
+      <ion-button expand="full" type="submit" [disabled]="!organizationRegistrationRequestForm.valid">{{
+        translatedButton
+      }}</ion-button>
+    </div>
+  </form>
+</ion-content>

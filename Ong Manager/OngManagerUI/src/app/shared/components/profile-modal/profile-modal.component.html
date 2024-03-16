@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ 'profile.editProfile' | translate }}</ion-title>
+    <ion-button slot="end" (click)="dismissModal(false)" fill="clear">
+      <ion-icon slot="icon-only" name="close-outline"> </ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fixed-height-content">
+  <form [formGroup]="profileForm" (ngSubmit)="editProfile()">
+    <ion-list>
+      <ion-item class="fixed-height-item">
+        <ion-label position="floating">{{ 'profile.email' | translate }}</ion-label>
+        <ion-input type="text" formControlName="email"></ion-input>
+        <small *ngIf="userEmailControl?.hasError('required') && userEmailControl.touched" class="error-message">
+          {{ 'profile.emailRequired' | translate }}
+        </small>
+        <small *ngIf="userEmailControl?.hasError('minlength') && userEmailControl.touched" class="error-message">
+          {{ 'profile.emailMinLength' | translate }}
+        </small>
+        <small *ngIf="userEmailControl?.hasError('maxlength') && userEmailControl.touched" class="error-message">
+          {{ 'profile.emailMaxLength' | translate }}
+        </small>
+        <small *ngIf="showEmailNotValidError()" class="error-message">
+          {{ 'profile.emailValid' | translate }}
+        </small>
+      </ion-item>
+
+      <ion-item class="fixed-height-item">
+        <ion-label position="floating">{{ 'profile.firstName' | translate }}</ion-label>
+        <ion-input type="text" formControlName="firstName" readonly="firstName"></ion-input>
+      </ion-item>
+
+      <ion-item class="fixed-height-item">
+        <ion-label position="floating">{{ 'profile.lastName' | translate }}</ion-label>
+        <ion-input type="text" formControlName="lastName" readonly="lastName"></ion-input>
+      </ion-item>
+
+      <ion-item class="fixed-height-item">
+        <ion-label position="floating">{{ 'profile.accountDescription' | translate }}</ion-label>
+        <ion-input type="text" formControlName="accountDescription"></ion-input>
+      </ion-item>
+
+      <ion-item class="fixed-height-item">
+        <ion-label position="floating">{{ 'profile.phoneNumber' | translate }}</ion-label>
+        <ion-input type="text" formControlName="phoneNumber"></ion-input>
+        <small
+          *ngIf="userPhoneNumberControl?.hasError('required') && userPhoneNumberControl.touched"
+          class="error-message"
+        >
+          {{ 'profile.phoneNumberRequired' | translate }}
+        </small>
+        <small
+          *ngIf="userPhoneNumberControl?.hasError('minlength') && userPhoneNumberControl.touched"
+          class="error-message"
+        >
+          {{ 'profile.phoneNumberMinLength' | translate }}
+        </small>
+        <small
+          *ngIf="userPhoneNumberControl?.hasError('maxlength') && userPhoneNumberControl.touched"
+          class="error-message"
+        >
+          {{ 'profile.phoneNumberMaxLength' | translate }}
+        </small>
+        <small
+          *ngIf="userPhoneNumberControl?.hasError('phoneNumberNotValid') && userPhoneNumberControl.touched"
+          class="error-message"
+        >
+          {{ 'profile.phoneNumberNotValid' | translate }}
+        </small>
+      </ion-item>
+
+      <ion-item class="fixed-height-item">
+        <ion-label position="floating">{{ 'profile.role' | translate }}</ion-label>
+        <ion-input type="text" formControlName="role" readonly="role"></ion-input>
+      </ion-item>
+
+      <ion-item class="fixed-height-item">
+        <ion-label class="file-label">{{ 'profile.profilePicture' | translate }}</ion-label>
+        <ion-button expand="full" fill="clear" (click)="selectFile()">
+          {{ 'profile.selectProfilePicture' | translate }}
+        </ion-button>
+        <input type="file" class="file-input" accept="image/*" id="FileInput" (change)="onFileChange($event)" />
+        <div *ngIf="selectedProfilePicture" class="file-preview">
+          <img [src]="selectedProfilePicture.src" [alt]="'profile.selectedProfilePicture' | translate" />
+          <span>{{ selectedProfilePicture.name }}</span>
+        </div>
+      </ion-item>
+    </ion-list>
+    <div class="ion-padding">
+      <ion-button expand="full" type="submit" [disabled]="!profileForm.valid" class="save-button">{{
+        'profile.save' | translate
+      }}</ion-button>
+    </div>
+  </form>
+</ion-content>

@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ translatedTitle }}</ion-title>
+    <ion-button slot="end" (click)="dismissModal(false)" fill="clear" class="close-button">
+      <ion-icon slot="icon-only" name="close-outline"> </ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fixed-height-content">
+  <form [formGroup]="districtForm" (ngSubmit)="actionDistrict()">
+    <ion-list>
+      <ion-item class="fixed-height-item">
+        <ion-label position="floating">{{ 'district.districtName' | translate }}</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+        <small *ngIf="districtNameControl?.hasError('required') && districtNameControl.touched" class="error-message">
+          {{ 'district.districtNameRequired' | translate }}
+        </small>
+        <small *ngIf="districtNameControl?.hasError('minlength') && districtNameControl.touched" class="error-message">
+          {{ 'district.districtNameMinLength' | translate }}
+        </small>
+        <small *ngIf="districtNameControl?.hasError('maxlength') && districtNameControl.touched" class="error-message">
+          {{ 'district.districtNameMaxLength' | translate }}
+        </small>
+      </ion-item>
+
+      <ion-item class="fixed-height-item">
+        <ion-label position="floating">{{ 'district.districtDescription' | translate }}</ion-label>
+        <ion-input type="text" formControlName="description"></ion-input>
+        <small
+          *ngIf="districtDescriptionControl?.hasError('required') && districtDescriptionControl.touched"
+          class="error-message"
+        >
+          {{ 'district.districtDescriptionRequired' | translate }}
+        </small>
+        <small
+          *ngIf="districtDescriptionControl?.hasError('maxlength') && districtDescriptionControl.touched"
+          class="error-message"
+        >
+          {{ 'district.districtDescriptionMaxLength' | translate }}
+        </small>
+      </ion-item>
+
+      <ion-item class="fixed-height-item">
+        <ion-label position="floating">{{ 'district.districtNumber' | translate }}</ion-label>
+        <ion-input type="number" formControlName="districtNumber"></ion-input>
+        <small
+          *ngIf="districtNumberControl?.hasError('required') && districtNumberControl.touched"
+          class="error-message"
+        >
+          {{ 'district.districtNumberRequired' | translate }}
+        </small>
+      </ion-item>
+
+      <ion-item class="fixed-height-item">
+        <ion-label position="floating">{{ 'district.districtCountries' | translate }}</ion-label>
+        <ion-input type="text" formControlName="countries"></ion-input>
+        <small
+          *ngIf="districtCountriesControl?.hasError('required') && districtCountriesControl.touched"
+          class="error-message"
+        >
+          {{ 'district.districtCountriesRequired' | translate }}
+        </small>
+      </ion-item>
+    </ion-list>
+
+    <div class="ion-padding">
+      <ion-button expand="full" type="submit" [disabled]="!districtForm.valid">{{ translatedButton }}</ion-button>
+    </div>
+  </form>
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "name": "Ong Manager",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

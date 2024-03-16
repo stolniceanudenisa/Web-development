@@ -1,0 +1,17 @@
+<div class="title container">
+  <h2>{{ 'welcomeOngManager' | translate }}</h2>
+</div>
+
+<div class="container">
+  <div class="grid-container">
+    <ion-button class="custom-button" (click)="redirectToLogin()">
+      {{ 'login' | translate }}
+    </ion-button>
+
+    <ion-button class="custom-button" (click)="redirectToRegister()">
+      {{ 'register' | translate }}
+    </ion-button>
+
+    <app-translate class="translate-welcome"> </app-translate>
+  </div>
+</div>

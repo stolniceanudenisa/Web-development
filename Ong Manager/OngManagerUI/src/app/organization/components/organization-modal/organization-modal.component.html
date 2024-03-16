@@ -1,0 +1,118 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ 'organization.editOrganization' | translate }}</ion-title>
+    <ion-button slot="end" (click)="dismissModal(false)" fill="clear">
+      <ion-icon slot="icon-only" name="close-outline"> </ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fixed-height-content">
+  <form [formGroup]="organizationForm" (ngSubmit)="editOrganization()">
+    <ion-list>
+      <ion-item class="fixed-height-item">
+        <ion-label position="floating">{{ 'organization.name' | translate }}</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+        <small
+          *ngIf="organizationNameControl?.hasError('required') && organizationNameControl.touched"
+          class="error-message"
+        >
+          {{ 'organization.organizationNameRequired' | translate }}
+        </small>
+        <small
+          *ngIf="organizationNameControl?.hasError('minlength') && organizationNameControl.touched"
+          class="error-message"
+        >
+          {{ 'organization.organizationNameMinLength' | translate }}
+        </small>
+        <small
+          *ngIf="organizationNameControl?.hasError('maxlength') && organizationNameControl.touched"
+          class="error-message"
+        >
+          {{ 'organization.organizationNameMaxLength' | translate }}
+        </small>
+      </ion-item>
+
+      <ion-item class="fixed-height-item">
+        <ion-label position="floating">{{ 'organization.description' | translate }}</ion-label>
+        <ion-input type="text" formControlName="description"></ion-input>
+        <small
+          *ngIf="organizationDescriptionControl?.hasError('required') && organizationDescriptionControl.touched"
+          class="error-message"
+        >
+          {{ 'organization.organizationDescriptionRequired' | translate }}
+        </small>
+        <small
+          *ngIf="organizationDescriptionControl?.hasError('maxlength') && organizationDescriptionControl.touched"
+          class="error-message"
+        >
+          {{ 'organization.organizationDescriptionMaxLength' | translate }}
+        </small>
+      </ion-item>
+
+      <ion-item class="fixed-height-item">
+        <ion-label position="floating">{{ 'organization.county' | translate }}</ion-label>
+        <ion-input type="text" formControlName="county"></ion-input>
+        <small
+          *ngIf="organizationCountyControl?.hasError('required') && organizationCountyControl.touched"
+          class="error-message"
+        >
+          {{ 'organization.organizationCountyRequired' | translate }}
+        </small>
+        <small
+          *ngIf="organizationCountyControl?.hasError('minlength') && organizationCountyControl.touched"
+          class="error-message"
+        >
+          {{ 'organization.organizationCountyMinLength' | translate }}
+        </small>
+        <small
+          *ngIf="organizationCountyControl?.hasError('maxlength') && organizationCountyControl.touched"
+          class="error-message"
+        >
+          {{ 'organization.organizationCountyMaxLength' | translate }}
+        </small>
+      </ion-item>
+
+      <ion-label class="file-label">{{ 'organization.logo' | translate }}</ion-label>
+      <ion-item class="fixed-height-item">
+        <ion-button expand="full" fill="clear" (click)="selectFile('logo')">
+          {{ 'organization.selectLogo' | translate }}
+        </ion-button>
+        <input
+          type="file"
+          class="file-input"
+          accept="image/*"
+          id="logoFileInput"
+          (change)="onFileChange($event, 'logo')"
+        />
+        <div *ngIf="selectedLogoFile" class="file-preview">
+          <img [src]="selectedLogoFile.src" [alt]="'organization.selectedLogo' | translate" />
+          <span>{{ selectedLogoFile.name }}</span>
+        </div>
+      </ion-item>
+
+      <ion-label class="file-label">{{ 'organization.banner' | translate }}</ion-label>
+      <ion-item class="fixed-height-item">
+        <ion-button expand="full" fill="clear" (click)="selectFile('banner')">
+          {{ 'organization.selectBanner' | translate }}
+        </ion-button>
+        <input
+          type="file"
+          class="file-input"
+          accept="image/*"
+          id="bannerFileInput"
+          (change)="onFileChange($event, 'banner')"
+        />
+        <div *ngIf="selectedBannerFile" class="file-preview">
+          <img [src]="selectedBannerFile.src" [alt]="'organization.selectedBanner' | translate" />
+          <span>{{ selectedBannerFile.name }}</span>
+        </div>
+      </ion-item>
+    </ion-list>
+    <div class="ion-padding">
+      <ion-button expand="full" type="submit" [disabled]="!organizationForm.valid" class="save-button">{{
+        'organization.save' | translate
+      }}</ion-button>
+    </div>
+  </form>
+</ion-content>

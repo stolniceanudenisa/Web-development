@@ -1,0 +1,51 @@
+<div class="registration-section ion-padding">
+  <div class="heading ion-padding">
+    <h1>{{ 'accountRegistration' | translate }}</h1>
+    <h2>{{ 'data' | translate }}</h2>
+  </div>
+  <form [formGroup]="registrationForm" (ngSubmit)="registrationSubmit()">
+    <div class="registration-form ion-padding">
+      <div class="form-input">
+        <ion-icon name="person-circle-outline"></ion-icon>
+        <ion-item>
+          <ion-label position="floating">{{ 'firstName' | translate }}</ion-label>
+          <ion-input type="text" formControlName="firstName" name="first-name"></ion-input>
+          <small *ngIf="firstNameControl?.hasError('required') && firstNameControl.touched" class="error-message">
+            {{ 'firstNameRequired' | translate }}
+          </small>
+        </ion-item>
+      </div>
+
+      <div class="form-input">
+        <ion-icon name="person-circle-outline"></ion-icon>
+        <ion-item>
+          <ion-label position="floating">{{ 'lastName' | translate }}</ion-label>
+          <ion-input type="text" formControlName="lastName" name="last-name"></ion-input>
+          <small *ngIf="lastNameControl?.hasError('required') && lastNameControl.touched" class="error-message">
+            {{ 'lastNameRequired' | translate }}
+          </small>
+        </ion-item>
+      </div>
+
+      <div class="form-input">
+        <ion-icon name="mail"></ion-icon>
+        <ion-item>
+          <ion-label position="floating">{{ 'email' | translate }}</ion-label>
+          <ion-input type="email" formControlName="email" name="email"></ion-input>
+          <small *ngIf="emailControl?.hasError('required') && emailControl.touched" class="error-message">
+            {{ 'emailRequired' | translate }}
+          </small>
+          <small *ngIf="emailControl?.hasError('error409')" class="error-message">{{
+            'emailAlreadyInUse' | translate
+          }}</small>
+        </ion-item>
+      </div>
+    </div>
+
+    <div class="registration-button ion-padding">
+      <ion-button size="large" class="register-button" type="submit" [disabled]="!registrationForm.valid">
+        {{ 'register' | translate }}
+      </ion-button>
+    </div>
+  </form>
+</div>

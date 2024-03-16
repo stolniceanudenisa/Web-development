@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .header-image {
+            max-width: 100%;
+            height: auto;
+            background-position: center;
+        }
+
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+<img src="cid:ong-manager-image" class="center"></img>
+
+<h1>Registration account</h1>
+<p>Dear ${firstName},</p>
+<p>Thank you for choosing to register an account with us! We're excited to have you on board. To complete the registration process, please follow the steps below:</p>
+<p>Use the next link to set your password and activate your account:  ${clientUrl}${setPasswordPath}${accountActivationCode}</p>
+<p>Welcome aboard!</p>
+
+
+</body>
+</html>

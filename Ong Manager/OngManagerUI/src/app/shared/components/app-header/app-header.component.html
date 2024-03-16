@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="header-toolbar">
+    <ion-title class="title toolbar-child">{{ pageTitle }}</ion-title>
+
+    <ion-buttons class="toolbar-child" slot="start">
+      <ng-container *ngTemplateOutlet="menuButtonTemplate"></ng-container>
+    </ion-buttons>
+    <div class="toolbar-child" slot="end">
+      <ng-content></ng-content>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="main">
+  <ion-router-outlet></ion-router-outlet>
+  <ng-template #menuButtonTemplate>
+    <ion-menu-toggle auto-hide="false">
+      <ion-button class="menu-button">
+        <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-menu-toggle>
+  </ng-template>
+</ion-content>

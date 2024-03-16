@@ -1,0 +1,16 @@
+<ion-item>
+  <ion-select
+    (ionChange)="handleLanguage($event)"
+    aria-label="Languages"
+    class="custom-select"
+    interface="popover"
+    placeholder="{{ 'language' | translate }}"
+  >
+    <ion-select-option value="en">
+      {{ 'english' | translate }}
+    </ion-select-option>
+    <ion-select-option value="ro">
+      {{ 'romanian' | translate }}
+    </ion-select-option>
+  </ion-select>
+</ion-item>

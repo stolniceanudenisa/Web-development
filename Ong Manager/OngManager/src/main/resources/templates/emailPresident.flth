@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .header-image {
+            max-width: 100%;
+            height: auto;
+            background-position: center;
+        }
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<img src="cid:ong-manager-image" class="center" >
+
+<h1>Notification: New User Interested in Joining</h1>
+<p>Dear President ${firstNamePresident},</p>
+<p>We hope this email finds you well. We are excited to inform you that a new user has expressed interest in joining the organization</p>
+<p>Please take a moment to reach out to the user and discuss their interest in joining. You can contact them at the provided email address. </p>
+<p>We believe their skills and enthusiasm could make a valuable contribution to our organization.</p>
+<p>Thank you for your attention to this matter.</p>
+
+<p>Best regards,</p>
+<p>The ${organizationName} Team</p>
+
+
+<table>
+    <thead>
+    <tr>
+        <th>Contact Last Name</th>
+        <th>Contact First Name</th>
+        <th>Contact Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>${lastNameUser}</td>
+        <td>${firstNameUser}</td>
+        <td>${emailUser}</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

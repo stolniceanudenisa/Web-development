@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .header-image {
+                    max-width: 100%;
+                    height: auto;
+                    background-position: center;
+                }
+
+                .center {
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                    width: 50%;
+
+                }
+    </style>
+</head>
+<body>
+<img src="cid:ong-manager-image" class="center"></img>
+
+<h1>Your Organization Registration Request</h1>
+<p>Dear ${firstName} ${lastName},</p>
+<p>We are writing to inform you that your organization registration request has been submitted successfully.</p>
+<p>Your application will be reviewed and you will receive a response as soon as the review process is completed.</p>
+<p>Thank you for expressing interest in creating your own organization: ${organizationName}. We appreciate your commitment and look forward to the possibility of working together.</p>
+<p>Best regards,<br>ONG Manager Team</p>
+</body>
+</html>

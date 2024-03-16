@@ -1,0 +1,9 @@
+.header-toolbar {
+  display: flex;
+  justify-content: space-between;
+  .title {
+    text-align: center;
+    font-weight: bold;
+    color: var(--ion-color-primary);
+  }
+}
